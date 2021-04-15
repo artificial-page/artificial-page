@@ -59,11 +59,11 @@ require("@artificial-page/builder").default([
 ## Example builder function
 
 ```ts
-export default async ({ source }: {
+export default ({ source }: {
   path: string,
   source: string,
   config: Record<string, any>
-}) => {
-  return source
+}): Record<string, string> => {
+  return { [path]: source }
 }
 ```
