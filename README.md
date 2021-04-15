@@ -5,7 +5,7 @@
 ## Install
 
 ```bash
-npm i @artificial-page/builder
+npm i --save-dev @artificial-page/builder
 ```
 
 ## Build
@@ -68,4 +68,4 @@ export default ({ source }: {
 }
 ```
 
-> ℹ️ Builder functions can be asynchronous.
+> ℹ️ Builder functions may be asynchronous.
