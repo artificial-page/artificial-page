@@ -52,7 +52,7 @@ require("@artificial-page/builder").default([
       { function: "src/artificial-page/coders/tsMjs" },
     ],
   },
-  { command: `printf "Build complete.\n"` }
+  { command: "printf", args: [`"Build complete.\n"`] }
 ])
 ```
 
