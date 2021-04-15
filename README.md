@@ -67,3 +67,5 @@ export default ({ source }: {
   return { [path]: source }
 }
 ```
+
+> ℹ️ Builder functions can be asynchronous.
