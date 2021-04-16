@@ -1,6 +1,6 @@
 # 🔬 Watch
 
-Inside the `./bin/watch` executable:
+An example `./bin/watch` executable:
 
 ```js
 #!/usr/bin/env node

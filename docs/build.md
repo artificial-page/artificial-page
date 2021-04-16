@@ -1,6 +1,6 @@
 # 🏗️ Build
 
-Inside the `./bin/build` executable:
+An example `./bin/build` executable:
 
 ```js
 #!/usr/bin/env node
