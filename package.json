@@ -1,7 +1,7 @@
 {
-  "name": "@artificial-page/builder",
+  "name": "artificial-page",
   "version": "0.0.1",
-  "description": "Extensible TypeScript build tool",
+  "description": "TypeScript low code productivity pattern and build tool",
   "bin": {},
   "scripts": {
     "build": "./bin/build",
@@ -12,14 +12,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/artificial-page/builder.git"
+    "url": "git+ssh://git@github.com/artificial-page/artificial-page.git"
   },
   "author": "Winton Welsh <mail@wintoni.us>",
   "license": "MIT",
+  "main": "./dist/artificialPage.js",
   "bugs": {
-    "url": "https://github.com/artificial-page/builder/issues"
+    "url": "https://github.com/artificial-page/artificial-page/issues"
   },
-  "homepage": "https://github.com/artificial-page/builder#readme",
+  "homepage": "https://github.com/artificial-page/artificial-page#readme",
   "devDependencies": {
     "@types/fs-extra": "9.0.10",
     "@types/mocha": "8.2.2",

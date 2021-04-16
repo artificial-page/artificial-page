@@ -1,11 +1,11 @@
-# Builder
+# Artificial Page
 
-🔧 Extensible TypeScript build tool
+🔧 TypeScript low code productivity pattern and extensible build tool
 
 ## Install
 
 ```bash
-npm i --save-dev @artificial-page/builder
+npm i --save-dev artificial-page
 ```
 
 ## Build
@@ -22,12 +22,12 @@ Inside the `bin/build` executable:
 ```js
 #!/usr/bin/env node
 
-require("@artificial-page/builder").default([
+require("artificial-page").default([
   { async: [
       // Remove dist directory
       { command: "rm", args: ["-rf", "dist"] },
 
-      // Vendor external repo source
+      // Vendor subdirectory of external git repo
       { vendor: "src/artificial-page",
         gitUrl: "git@github.com:artificial-page/artificial-page.git",
         gitDir: "src",
@@ -43,20 +43,20 @@ require("@artificial-page/builder").default([
     ],
   },
   { async: [
-      // Path builder function
+      // Path custom processor function
       { function: "src/artificial-page/coders/tsPaths",
         baseDir: "src",
       },
 
-      // MJS builder function
+      // MJS custom processor function
       { function: "src/artificial-page/coders/tsMjs" },
     ],
   },
-  { command: "printf", args: [`"Build complete.\n"`] }
+  { command: "printf", args: [`"Build complete.\n"`] },
 ])
 ```
 
-## Example builder function
+## Custom processor function API
 
 ```ts
 export default ({ source }: {
@@ -68,4 +68,4 @@ export default ({ source }: {
 }
 ```
 
-> ℹ️ Builder functions may be asynchronous.
+> ℹ️  Functions may be asynchronous.
