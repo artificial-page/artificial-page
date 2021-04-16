@@ -1,6 +1,6 @@
 # 🦾 Artificial Page
 
-TypeScript low code productivity pattern and extensible build tool
+TypeScript build tool for low code experimentation
 
 ## 🏁 Install
 
