@@ -14,7 +14,9 @@ npm i --save-dev artificial-page
 npx artificial-page
 ```
 
-This command asks you some questions and generates two files: `./bin/build` and `./bin/watch`.
+This command asks you some questions and generates two files:
+  * `./bin/build`
+  * `./bin/watch`
 
 These files act as the configuration for your build, enabling the following features:
 
