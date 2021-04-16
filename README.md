@@ -1,71 +1,33 @@
-# Artificial Page
+# 🦾 Artificial Page
 
-🦾🔧 TypeScript low code productivity pattern and extensible build tool
+TypeScript low code productivity pattern and extensible build tool
 
-## Install
+## 🏁 Install
 
 ```bash
 npm i --save-dev artificial-page
 ```
 
-## Build
-
-Create a `bin/build` executable:
+## 🪄 Generate
 
 ```bash
-touch bin/build
-chmod +x bin/build
+npx artificial-page
 ```
 
-Inside the `bin/build` executable:
+This command generates two files: `./bin/build` and `./bin/watch`.
 
-```js
-#!/usr/bin/env node
+## 🏗️ Build
 
-require("artificial-page").default([
-  { async: [
-      // Remove dist directory
-      { command: "rm", args: ["-rf", "dist"] },
-
-      // Vendor subdirectory of external git repo
-      { vendor: "src/artificial-page",
-        gitUrl: "git@github.com:artificial-page/artificial-page.git",
-        gitDir: "src",
-      },
-    ],
-  },
-  { async: [
-      // Build TypeScript CJS
-      { command: "npx", args: ["tsc", "--project", "tsconfig.json"] },
-      
-      // Build TypeScript ESM
-      { command: "npx", args: ["tsc", "--project", "tsconfig.esm.json"] },
-    ],
-  },
-  { async: [
-      // Path custom processor function
-      { function: "src/artificial-page/coders/tsPaths",
-        baseDir: "src",
-      },
-
-      // MJS custom processor function
-      { function: "src/artificial-page/coders/tsMjs" },
-    ],
-  },
-  { command: "printf", args: [`"Build complete.\n"`] },
-])
+```bash
+./bin/build
 ```
 
-## Custom processor function API
+[Learn more about the build file.](docs/build.md)
 
-```ts
-export default ({ source }: {
-  path: string,
-  source: string,
-  config: Record<string, any>
-}): Record<string, string> => {
-  return { [path]: source }
-}
+## 🔬 Watch
+
+```bash
+./bin/watch
 ```
 
-> ℹ️  Functions may be asynchronous.
+[Learn more about the watch file.](docs/watch.md)
