@@ -9,7 +9,7 @@ const path = require("path")
 
 require("artificial-page").build({
   rootPath: path.join(__dirname, "../"),
-  steps: [
+  buildSteps: [
     {
       async: [
         // Remove dist directory

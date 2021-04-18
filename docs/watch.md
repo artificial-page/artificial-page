@@ -9,7 +9,7 @@ const path = require("path")
 
 require("artificial-page").watch({
   rootPath: path.join(__dirname, "../"),
-  start: [
+  startSteps: [
     {
       async: [
         // Watch TypeScript CJS
@@ -26,7 +26,7 @@ require("artificial-page").watch({
       ],
     }
   ],
-  steps: [
+  watchSteps: [
     {
       async: [
         // Auto spec
