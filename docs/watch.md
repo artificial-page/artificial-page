@@ -43,7 +43,7 @@ require("artificial-page").watch({
         
         // Relative base paths processor
         {
-          function: "src/artificial-page/project/relativeBasePaths"
+          function: "src/artificial-page/project/relativeBasePaths",
           distPaths: [
             path.join(__dirname, "../dist/cjs"),
             path.join(__dirname, "../dist/esm"),
@@ -52,7 +52,7 @@ require("artificial-page").watch({
 
         // MJS extensions processor
         {
-          function: "src/artificial-page/project/mjsExtensions"
+          function: "src/artificial-page/project/mjsExtensions",
           distPath: path.join(__dirname, "../dist/esm"),
         },
       ],

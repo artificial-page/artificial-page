@@ -42,7 +42,7 @@ require("artificial-page").build({
         
         // Relative base paths processor
         {
-          function: "src/artificial-page/project/relativeBasePaths"
+          function: "src/artificial-page/project/relativeBasePaths",
           distPaths: [
             path.join(__dirname, "../dist/cjs"),
             path.join(__dirname, "../dist/esm"),
@@ -51,7 +51,7 @@ require("artificial-page").build({
 
         // MJS extensions processor
         {
-          function: "src/artificial-page/project/mjsExtensions"
+          function: "src/artificial-page/project/mjsExtensions",
           distPath: path.join(__dirname, "../dist/esm"),
         },
       ],
