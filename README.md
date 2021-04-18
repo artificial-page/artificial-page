@@ -14,7 +14,7 @@ npm i --save-dev artificial-page fast-glob
 npx artificial-page
 ```
 
-After selecting [strategies](#strategies) to install, the command generates two files:
+After selecting [strategies](#%EF%B8%8F-strategies) to install, the command generates two files:
 
   * [`./bin/build`](docs/build.md)
   * [`./bin/watch`](docs/watch.md)

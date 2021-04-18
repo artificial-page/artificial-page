@@ -15,11 +15,11 @@ require("artificial-page").build({
         // Remove dist directory
         { command: "rm", args: ["-rf", "dist"] },
 
-        // Vendor external git repo directory
+        // Vendor from external git repo directory
         { 
+          vendor: "src/artificialPage",
           gitUrl: "git@github.com:artificial-page/artificial-page.git",
-          srcPath: "src/artificialPage"
-          destPath: "src/artificialPage",
+          gitPath: "src/artificialPage",
         },
       ],
     },
