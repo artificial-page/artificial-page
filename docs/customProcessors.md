@@ -4,7 +4,14 @@
 export default ({ source }: {
   path: string,
   source: string,
-  mode: "build" | "buildDir" | "watch" | "watchDir"
+  mode: "build" |
+    "buildDir" |
+    "watchAdd" |
+    "watchAddDir" |
+    "watchChange" |
+    "watchChangeDir" |
+    "watchUnlink" |
+    "watchUnlinkDir" |
   config: Record<string, any>
 }): Record<string, string> => {
   return { [path]: source }
