@@ -1,3 +1,2 @@
-export function builder(): void {}
-
-export default builder
+export { builder } from "artificialPage/project/builder"
+export { watcher } from "artificialPage/project/watcher"

@@ -5,36 +5,58 @@ An example `./bin/build` executable:
 ```js
 #!/usr/bin/env node
 
-require("artificial-page").build([
-  { async: [
-      // Remove dist directory
-      { command: "rm", args: ["-rf", "dist"] },
+const path = require("path")
 
-      // Vendor subdirectory of external git repo
-      { vendor: "src/artificial-page",
-        gitUrl: "git@github.com:artificial-page/artificial-page.git",
-        gitDir: "src",
-      },
-    ],
-  },
-  { async: [
-      // Build TypeScript CJS
-      { command: "npx", args: ["tsc", "--project", "tsconfig.json"] },
-      
-      // Build TypeScript ESM
-      { command: "npx", args: ["tsc", "--project", "tsconfig.esm.json"] },
-    ],
-  },
-  { async: [
-      // Path custom processor function
-      { function: "src/artificial-page/coders/tsPaths",
-        baseDir: "src",
-      },
+require("artificial-page").build({
+  rootPath: path.join(__dirname, "../"),
+  steps: [
+    {
+      async: [
+        // Remove dist directory
+        { command: "rm", args: ["-rf", "dist"] },
 
-      // MJS custom processor function
-      { function: "src/artificial-page/coders/tsMjs" },
-    ],
-  },
-  { command: "printf", args: [`"Build complete.\n"`] },
-])
+        // Vendor external git repo directory
+        { 
+          gitUrl: "git@github.com:artificial-page/artificial-page.git",
+          srcPath: "src/artificialPage"
+          destPath: "src/artificialPage",
+        },
+      ],
+    },
+    {
+      async: [
+        // Build TypeScript CJS
+        { command: "npx", args: ["tsc", "--project", "tsconfig.json"] },
+        
+        // Build TypeScript ESM
+        { command: "npx", args: ["tsc", "--project", "tsconfig.esm.json"] },
+      ],
+    },
+    {
+      async: [
+        // Dotfile control flow processor
+        {
+          function: "src/artificial-page/project/dotfileControlFlow",
+          srcPath: path.join(__dirname, "../src"),
+        },
+        
+        // Relative base paths processor
+        {
+          function: "src/artificial-page/project/relativeBasePaths"
+          distPaths: [
+            path.join(__dirname, "../dist/cjs"),
+            path.join(__dirname, "../dist/esm"),
+          ],
+        },
+
+        // MJS extensions processor
+        {
+          function: "src/artificial-page/project/mjsExtensions"
+          distPath: path.join(__dirname, "../dist/esm"),
+        },
+      ],
+    },
+    { command: "printf", args: [`"Build complete.\n"`] },
+  ]
+})
 ```
