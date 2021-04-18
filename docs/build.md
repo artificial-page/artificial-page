@@ -15,11 +15,11 @@ require("artificial-page").build({
         // Remove dist directory
         { command: "rm", args: ["-rf", "dist"] },
 
-        // Vendor from external git repo directory
+        // Vendor from external git repo subdirectory
         { 
           vendor: "src/artificialPage",
-          gitUrl: "git@github.com:artificial-page/artificial-page.git",
           gitPath: "src/artificialPage",
+          gitUrl: "git@github.com:artificial-page/artificial-page.git",
         },
       ],
     },
@@ -36,13 +36,13 @@ require("artificial-page").build({
       async: [
         // Dotfile control flow processor
         {
-          function: "src/artificial-page/project/dotfileControlFlow",
+          function: "src/artificialPage/project/dotfileControlFlow",
           srcPath: path.join(__dirname, "../src"),
         },
         
         // Relative base paths processor
         {
-          function: "src/artificial-page/project/relativeBasePaths",
+          function: "src/artificialPage/project/relativeBasePaths",
           distPaths: [
             path.join(__dirname, "../dist/cjs"),
             path.join(__dirname, "../dist/esm"),
@@ -51,7 +51,7 @@ require("artificial-page").build({
 
         // MJS extensions processor
         {
-          function: "src/artificial-page/project/mjsExtensions",
+          function: "src/artificialPage/project/mjsExtensions",
           distPath: path.join(__dirname, "../dist/esm"),
         },
       ],
@@ -60,3 +60,9 @@ require("artificial-page").build({
   ]
 })
 ```
+
+## Build step types
+
+* `command` - Bash command with `args`
+* `function` - Function path with custom options
+* `vendor` - Vendor a directory from a `gitUrl` and `gitPath`

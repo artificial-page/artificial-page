@@ -9,17 +9,19 @@ const path = require("path")
 
 require("artificial-page").watch({
   rootPath: path.join(__dirname, "../"),
-  startSteps: [
+  initSteps: [
     {
       async: [
         // Watch TypeScript CJS
-        { command: "npx",
+        {
+          command: "npx",
           args: ["tsc", "-w", "--preserveWatchOutput", "--project", "tsconfig.json"],
           wait: false,
         },
         
         // Watch TypeScript ESM
-        { command: "npx",
+        {
+          command: "npx",
           args: ["tsc", "-w", "--preserveWatchOutput" "--project", "tsconfig.esm.json"],
           wait: false,
         },
@@ -31,19 +33,19 @@ require("artificial-page").watch({
       async: [
         // Auto spec
         {
-          function: "src/artificial-page/project/autoSpec",
+          function: "src/artificialPage/project/autoSpec",
           srcPath: path.join(__dirname, "../src"),
         },
 
         // Dotfile control flow processor
         {
-          function: "src/artificial-page/project/dotfileControlFlow",
+          function: "src/artificialPage/project/dotfileControlFlow",
           srcPath: path.join(__dirname, "../src"),
         },
         
         // Relative base paths processor
         {
-          function: "src/artificial-page/project/relativeBasePaths",
+          function: "src/artificialPage/project/relativeBasePaths",
           distPaths: [
             path.join(__dirname, "../dist/cjs"),
             path.join(__dirname, "../dist/esm"),
@@ -52,7 +54,7 @@ require("artificial-page").watch({
 
         // MJS extensions processor
         {
-          function: "src/artificial-page/project/mjsExtensions",
+          function: "src/artificialPage/project/mjsExtensions",
           distPath: path.join(__dirname, "../dist/esm"),
         },
       ],
@@ -60,3 +62,11 @@ require("artificial-page").watch({
   ],
 })
 ```
+
+> ⚠️ Use `initSteps` to define steps that run once before `watchSteps`.
+
+## Watch step types
+
+* `command` - Bash command with `args`
+* `function` - Function path with custom options
+* `vendor` - Vendor a directory from a `gitUrl` and `gitPath`
