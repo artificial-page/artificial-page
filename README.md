@@ -27,5 +27,5 @@ These executables act as the entrypoint for building and watching your TypeScrip
 | :--- | :--- |
 | Auto spec | Generate specs for new source code files |
 | Dotfile control flow | Define the control flow of functions using dotfiles |
-| Relative base paths | Makes [`baseUrl` paths](https://www.typescriptlang.org/tsconfig#baseUrl) relative |
-| MJS extensions | Adds MJS extensions to [ES2020 module](https://www.typescriptlang.org/tsconfig#module) builds |
+| Relative base paths | Make [`baseUrl` paths](https://www.typescriptlang.org/tsconfig#baseUrl) relative in compiled JS |
+| MJS extensions | Adds MJS extensions to [ES2020 module](https://www.typescriptlang.org/tsconfig#module) compiled JS |
