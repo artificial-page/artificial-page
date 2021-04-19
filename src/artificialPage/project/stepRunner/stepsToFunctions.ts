@@ -6,15 +6,38 @@ export function stepsToFunctions({
 }: {
   steps: Record<string, any>[]
   stepList: string[]
-}): (() => any)[] {
+}): (() => Promise<any>)[] {
   return steps.map((step) => {
+    if (step.async) {
+      return async () => {
+        return await Promise.all(
+          stepsToFunctions({
+            steps: step.async,
+            stepList,
+          }).map((fn) => fn())
+        )
+      }
+    }
+
+    if (Array.isArray(step)) {
+      return async () => {
+        const fns = stepsToFunctions({
+          steps: step,
+          stepList,
+        })
+        for (const fn of fns) {
+          await fn()
+        }
+      }
+    }
+
     const stepType = stepList.find(
       (s) => step[s] !== undefined
     )
 
     if (!stepType) {
       console.error(
-        "Could not find step type:",
+        "Could not find type for step:",
         JSON.stringify(step)
       )
 

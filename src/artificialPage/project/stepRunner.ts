@@ -1,28 +1,18 @@
-import listSteps from "./stepRunner/listSteps"
+import stepLister from "./stepLister/stepLister"
 import stepsToFunctions from "./stepRunner/stepsToFunctions"
 
 export async function stepRunner(
   steps: Record<string, any>[]
 ): Promise<void> {
-  const stepList = await listSteps()
+  const stepList = await stepLister()
 
-  for (const step of steps) {
-    if (step.async) {
-      await Promise.all(
-        stepsToFunctions({
-          steps: step.async,
-          stepList,
-        }).map((fn) => fn())
-      )
-    } else {
-      const functions = stepsToFunctions({
-        steps: step.async,
-        stepList,
-      })
-      for (const fn of functions) {
-        await fn()
-      }
-    }
+  const functions = stepsToFunctions({
+    steps,
+    stepList,
+  })
+
+  for (const fn of functions) {
+    await fn()
   }
 }
 

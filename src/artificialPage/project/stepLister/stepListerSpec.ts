@@ -1,9 +1,9 @@
 import expect from "expect"
-import listSteps from "./listSteps"
+import stepLister from "./stepLister"
 
-describe("listSteps", () => {
+describe("stepLister", () => {
   it("lists step names", async () => {
-    const steps = await listSteps()
+    const steps = await stepLister()
     expect(steps).toContain("command")
     expect(steps).toContain("function")
     expect(steps).toContain("vendor")
